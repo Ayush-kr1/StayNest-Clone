@@ -2,10 +2,6 @@
   "engines": {
     "node": "24.15.0"
   },
-<<<<<<< HEAD
-=======
-
->>>>>>> b1f77cb (Updated project)
   "name": "majorprojct",
   "version": "1.0.0",
   "main": "index.js",
