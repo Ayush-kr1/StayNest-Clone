@@ -252,7 +252,7 @@ Property images are uploaded using **Cloudinary** and stored securely in the clo
 
 **Ayush Kumar**
 
-GitHub: **https://github.com/Ayush-kr1**
+GitHub: 
 
 ---
 
