@@ -252,7 +252,9 @@ Property images are uploaded using **Cloudinary** and stored securely in the clo
 
 **Ayush Kumar**
 
-GitHub: 
+## GitHub
+
+Repository: https://github.com/YourUsername/StayNest
 
 ---
 
