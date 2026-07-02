@@ -14,7 +14,12 @@
       alt="listing_image"
     />
     <div class="card-body">
-      <p class="card-text">Owned by <i><%= listing.owner.username %></i></p>
+       <% if (listing.owner) { %>
+        <p class="card-text">
+           Owned by <i><%= listing.owner.username %></i>
+       </p>
+      <% } %>
+      
       <p class="card-text"> <%= listing.description %></p> 
       <p class="card-text">&#8377; <%= listing.price.toLocaleString("en-IN") %></p> 
       <p class="card-text"><%= listing.location %></p>
@@ -25,7 +30,8 @@
   <br />
 
   <!-- Edit/Delete Buttons -->
-  <% if(currUser && listing.owner._id.equals(currUser._id)) { %>
+  <% if(currUser && listing.owner && listing.owner._id.equals(currUser._id)) { %>
+ 
   <div class="btns">
     <a 
       href="/listings/<%= listing._id %>/edit" 
@@ -99,20 +105,30 @@
         <% for(review of listing.reviews) { %>
           <div class="card col-5 ms-3 mb-3">
             <div class="card-body">
-              <h5 class="card-title">@<%= review.author.username %></h5>
+              <h5 class="card-title">
+                @<%= review.author ? review.author.username : "Deleted User" %>
+              </h5>
+              
               <p 
                 class="starability-result card-text" 
                 data-rating="<%= review.rating %>"
               ></p>
               <p class="card-text"><%= review.comment %></p>
 
-              <form 
-                class="mb-3"
-                method="POST"
-                action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
-              >           
-                <button class="btn btn-sm btn-dark">Delete</button>
-              </form>
+           <% if(review.author && currUser && review.author._id.equals(currUser._id)) { %>
+
+            <form
+               class="mb-3"
+               method="POST"
+               action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
+
+                <button class="btn btn-sm btn-dark">
+                  Delete
+                </button>
+
+            </form>
+            <% } %>
+
             </div>
           </div>
         <% } %>
